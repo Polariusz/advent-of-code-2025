@@ -1,35 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum Direction {
-	LEFT,
-	RIGHT,
-};
-
-struct Node {
-	enum Direction dir;
-	int distance;
-	struct Node *next;
-};
-
-struct Node *addNode(struct Node *node, enum Direction dir, int distance)
-{
-	struct Node *head = malloc(sizeof(struct Node));
-	head->dir = dir;
-	head->distance = distance;
-	head->next = node;
-
-	return head;
-}
-
-void dump(struct Node *node)
-{
-	while(node != NULL) {
-		printf("DIR: %s, distance: %d\n", node->dir == LEFT ? "left" : "right", node->distance);
-		node = node->next;
-	}
-}
-
 void addDirection(char direction, int distance, int *currentRotation, int *cntZeroesPartOne, int *cntZeroesPartTwo)
 {
 	if(direction == 'L') {
