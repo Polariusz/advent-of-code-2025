@@ -101,10 +101,10 @@ long findInvalidPartOne(long id) {
 	return id;
 }
 
-long iterateThroughLongsToFindInvalidsPartOne(struct Longs longs) {
+long iterateThroughLongsToFindInvalidsPartOne(long left, long right) {
 	long toReturn = 0;
 
-	for(long i = longs.left; i <= longs.right; i++) {
+	for(long i = left; i <= right; i++) {
 		long res = findInvalidPartOne(i);
 		if(res != 0) {
 			toReturn += res;
@@ -119,12 +119,14 @@ long findInvalidPartTwo(long id) {
 	sprintf(buf, "%ld", id);
 
 	int middle = strlen(buf) / 2;
+
+	return 0;
 }
 
-long iterateThroughLongsToFindInvalidsPartTwo(struct Longs longs) {
+long iterateThroughLongsToFindInvalidsPartTwo(long left, long right) {
 	long toReturn = 0;
 
-	for(long i = longs.left; i <= longs.right; i++) {
+	for(long i = left; i <= right; i++) {
 		long res = findInvalidPartTwo(i);
 		if(res != 0) {
 			toReturn += res;
@@ -147,43 +149,17 @@ int main(int carg, char **varg)
 		return 69;
 	}
 
-	struct CharArray ca = charArrayNew(16);
-	char c = '\0';
-	while((c = fgetc(fp)) && c != EOF && c != '\n') {
-		charArrayAdd(&ca, c);
+	long sumPartOne = 0;
+	long left = 0;
+	long right = 0;
+	while(fscanf(fp, "%ld-%ld,", &left, &right) != EOF) {
+		printf("left: %ld\n", left);
+		printf("right: %ld\n", right);
+		sumPartOne += iterateThroughLongsToFindInvalidsPartOne(left, right);
 	}
+
+	printf("sumPartOne: %ld\n", sumPartOne);
 	fclose(fp);
-
-	char *text = charArrayToCString(&ca);
-	printf("text: %s\n", text);
-
-	long invalidSum = 0;
-	char *prevAddr = text;
-	char *commaAddr = text;
-	while((commaAddr = strchr(commaAddr, ',')) != NULL) {
-		struct Longs longs = strRangeToLongs(prevAddr);
-		invalidSum += iterateThroughLongsToFindInvalidsPartOne(longs);
-
-		prevAddr = commaAddr + 1;
-		commaAddr += 1;
-	}
-	struct Longs longs = strRangeToLongs(prevAddr);
-	invalidSum += iterateThroughLongsToFindInvalidsPartOne(longs);
-
-	printf("Result: %ld\n", invalidSum);
-
-	free(text);
-	text = NULL;
-
-	/* Debugging
-	printf(">Y %ld\n", findInvalidPartTwo(99));
-	printf(">N %ld\n", findInvalidPartTwo(999));
-	printf(">Y %ld\n", findInvalidPartTwo(9999));
-	printf(">Y %ld\n", findInvalidPartTwo(1010));
-	printf(">Y %ld\n", findInvalidPartTwo(102102));
-	printf(">N %ld\n", findInvalidPartTwo(22222));
-	printf(">Y %ld\n", findInvalidPartTwo(223344223344));
-	*/
 
 	return printf("Just Monika\n");
 }
