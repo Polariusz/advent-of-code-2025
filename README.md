@@ -9,3 +9,6 @@ AoC: https://adventofcode.com/2025/
 - Day three:
   - Part one: yes, skill issues
   - Part two: no, skill issues
+- Day four:
+  - Part one: yes, was fun
+  - Part two: yes, was fun too
