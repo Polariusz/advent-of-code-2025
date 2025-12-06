@@ -30,29 +30,26 @@ long findMaxJoltage(char *buf)
 	return l*10+r;
 }
 
-long findMaxJoltagePartTwo(char *buf) 
+long findMaxJoltagePartTwo(char *buf, unsigned int len)
 {
-	// TODO: impl this.
-	// 
-	// max: 3; buf: "543211218123"
-	// for i=0;i<max;i++:
-		// Find the biggest that is located from 0 to strlen(buf) - max + i + 1
-		// found one needs to be added to array
-		// Cut from 0 to found
-	// 543211218123
-	// add(8)
-	// 123
-	// add(2)
-	// add(3)
-	// 
-	//
-	// max: 4; buf: 33224422921118211173
-	// add(9)
-	// 21118211173
-	// add(8)
-	// 211173
-	// add(7)
-	// add(3)
+	char res[len+1];
+	for(int i = 0; i < len+1; ++i) {
+		res[i] = '\0';
+	}
+
+	unsigned int c_res = 0;
+
+	for(unsigned int i = 0; i < strlen(buf); ++i) {
+		if(c_res < len) {
+			res[c_res] = buf[i];
+			++c_res;
+		} else {
+			// len reached
+		}
+	}
+
+	printf("res: %s\n", res);
+	return 0;
 }
 
 int main(int carg, char **varg)
@@ -68,6 +65,7 @@ int main(int carg, char **varg)
 		return 69;
 	}
 
+	/*
 	long sum = 0;
 	char buf[128] = {0};
 	while(fscanf(fp, "%s\n", buf) != EOF) {
@@ -76,6 +74,12 @@ int main(int carg, char **varg)
 	}
 
 	printf("sum: %ld\n", sum);
+	*/
+
+	printf("in: 123321, 3; expected: 321 "); findMaxJoltagePartTwo("123321", 3);
+	printf("in: 123321, 2; expected: 33 "); findMaxJoltagePartTwo("123321", 2);
+	printf("in: 321123, 4; expected: 3223 "); findMaxJoltagePartTwo("321123", 4);
+	printf("in: 321123, 5; expected: 32123 "); findMaxJoltagePartTwo("321123", 5);
 
 	return printf("Just Monika\n");
 }

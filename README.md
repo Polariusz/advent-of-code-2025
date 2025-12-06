@@ -6,6 +6,6 @@ AoC: https://adventofcode.com/2025/
 - Day two:
   - Part one: yes, first try even
   - Part two: yes, second try even, skill issues too
-- Day one:
+- Day three:
   - Part one: yes, skill issues
-  - Part two: 
+  - Part two: no, skill issues
