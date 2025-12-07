@@ -12,3 +12,6 @@ AoC: https://adventofcode.com/2025/
 - Day four:
   - Part one: yes, was fun
   - Part two: yes, was fun too
+- Day five:
+  - Part one: yes
+  - Part two: 
