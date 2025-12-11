@@ -16,7 +16,7 @@ AoC: https://adventofcode.com/2025/
   - Part one: yes
   - Part two:
 - Day six:
-  - Part one:
+  - Part one: yes, learned that fscanf(... "%s" ...); doesn't write the spaces, tabs etc. to the buffer. It helped!
   - Part two:
 - Day seven:
   - Part one: yes
